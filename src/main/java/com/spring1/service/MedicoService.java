@@ -1,12 +1,11 @@
 package com.spring1.service;
 
 import com.spring1.model.Medico;
-import com.spring1.model.Usuario;
 import com.spring1.repository.MedicoRepository;
-import com.spring1.repository.UsuarioRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class MedicoService {
     private final MedicoRepository medicoRepository;
 

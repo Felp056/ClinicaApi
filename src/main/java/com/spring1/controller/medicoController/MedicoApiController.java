@@ -3,7 +3,6 @@ package com.spring1.controller.medicoController;
 import com.spring1.model.Medico;
 import com.spring1.service.MedicoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springdoc.core.service.GenericResponseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +11,9 @@ import java.util.List;
 @RestController
 public class MedicoApiController {
     private final MedicoService medicoRepository;
-    private final GenericResponseService responseBuilder;
 
-    public MedicoApiController(MedicoService med, GenericResponseService responseBuilder) {
+    public MedicoApiController(MedicoService med) {
         this.medicoRepository = med;
-        this.responseBuilder = responseBuilder;
     }
     @GetMapping(path = "/medicos")
     public List<Medico> getMedicos() { return medicoRepository.findAll();}
