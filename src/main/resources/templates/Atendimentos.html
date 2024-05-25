@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Atendimentos</title>
+</head>
+<body>
+    <h1>Adicionar novo Atendimento</h1>
+    <form method="post" th:action="@/atendimentos/save}">
+        <label>Anamnese: <input type="text" name="anamnese"/></label> <br>
+        <label>Médico:
+            <select th:field="*{medico}">
+                <option></option>
+            </select></label>
+    </form>
+</body>
+</html>
