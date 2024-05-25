@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciamento de Pacientes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        form button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Adicionar novo paciente</h1>
+<form method="post" th:action="@{/pacientes/save}">
+    <label>Nome: <input type="text" name="nome" required/></label>
+    <br>
+    <label>Email: <input type="email" name="email" required/></label>
+    <br>
+    <label>Idade: <input type="number" name="idade" required/></label>
+    <br>
+    <label>Endereço: <input type="text" name="endereco" required/></label>
+    <br>
+    <button type="submit">Salvar</button>
+</form>
+<h1>Lista de pacientes</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Idade</th>
+        <th>Endereço</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="paciente : ${pacientes}">
+        <td th:text="${paciente.id}"></td>
+        <td th:text="${paciente.nome}"></td>
+        <td th:text="${paciente.email}"></td>
+        <td th:text="${paciente.idade}"></td>
+        <td th:text="${paciente.endereco}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
