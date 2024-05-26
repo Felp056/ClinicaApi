@@ -1,4 +1,4 @@
-package com.spring1.controller;
+package com.spring1.controller.atendimentoController;
 
 import com.spring1.model.Atendimento;
 import com.spring1.service.AtendimentoService;
