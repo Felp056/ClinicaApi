@@ -3,15 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <title>Atendimentos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        form input[type="text"],
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        form button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-    <h1>Adicionar novo Atendimento</h1>
-    <form method="post" th:action="@/atendimentos/save}">
-        <label>Anamnese: <input type="text" name="anamnese"/></label> <br>
-        <label>Médico:
-            <select th:field="*{medico}">
-                <option></option>
-            </select></label>
-    </form>
+<h1>Adicionar novo Atendimento</h1>
+<form method="post" th:action="@{/atendimentos/save}">
+    <label>Anamnese: <input type="text" name="anamnese"/></label> <br>
+    <label>Médico:
+        <select class="form-control" id="medicoList">
+            <option disabled selected>Selecione um medico...</option>
+            <option th:each="medico : ${medicos}" th:value="${medico.getNome()}" th:text="${medico.getNome()}"></option>
+        </select>
+    </label><br>
+    <label>Paciente:
+        <select class="form-control" id="pacienteList">
+            <option disabled selected>Selecione um paciente...</option>
+            <option th:each="paciente : ${pacientes}" th:value="${paciente.getNome()}" th:text="${paciente.getNome()}"></option>
+        </select>
+    </label>
+    <button type="submit">Salvar</button>
+</form>
+
+<h1>Lista de Atendimentos</h1>
+<table>
+    <thead>
+    <tr>
+        <th><b>ID</b></th>
+        <th>Data e Hora</th>
+        <th>Medico</th>
+        <th>Paciente</th>
+        <th>Anamnese</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="atendimento : ${atendimentos}">
+        <td th:text="${atendimento.getId()}"></td>
+        <td th:text="${atendimento.getData_hora()}"></td>
+        <td th:text="${atendimento.getMedico()}"></td>
+        <td th:text="${atendimento.getPaciente()}"></td>
+        <td th:text="${atendimento.getAnamnese()}"></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
