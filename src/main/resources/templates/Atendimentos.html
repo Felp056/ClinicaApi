@@ -64,13 +64,13 @@
 <form method="post" th:action="@{/atendimentos/save}">
     <label>Anamnese: <input type="text" name="anamnese"/></label> <br>
     <label>Médico:
-        <select class="form-control" id="medicoList">
+        <select class="form-control" id="medicoList" name="medico">
             <option disabled selected>Selecione um medico...</option>
             <option th:each="medico : ${medicos}" th:value="${medico.getNome()}" th:text="${medico.getNome()}"></option>
         </select>
     </label><br>
     <label>Paciente:
-        <select class="form-control" id="pacienteList">
+        <select class="form-control" id="pacienteList" name="paciente">
             <option disabled selected>Selecione um paciente...</option>
             <option th:each="paciente : ${pacientes}" th:value="${paciente.getNome()}" th:text="${paciente.getNome()}"></option>
         </select>
@@ -93,8 +93,8 @@
     <tr th:each="atendimento : ${atendimentos}">
         <td th:text="${atendimento.getId()}"></td>
         <td th:text="${atendimento.getData_hora()}"></td>
-        <td th:text="${atendimento.getMedico()}"></td>
-        <td th:text="${atendimento.getPaciente()}"></td>
+        <td th:text="${atendimento.getMedico().getNome()}"></td>
+        <td th:text="${atendimento.getPaciente().getNome()}"></td>
         <td th:text="${atendimento.getAnamnese()}"></td>
     </tr>
     </tbody>

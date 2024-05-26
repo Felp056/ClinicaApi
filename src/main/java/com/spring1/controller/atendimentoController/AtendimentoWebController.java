@@ -45,16 +45,18 @@ public class AtendimentoWebController {
 
     @PostMapping(path = "/atendimentos/save")
     public String saveAtendimento(AtendimentoDTO atendimentoDTO) {
+
         System.out.println("Medico: "+atendimentoDTO.getMedico());
         System.out.println("Paciente: "+atendimentoDTO.getPaciente());
 
-
         Atendimento atendimento = new Atendimento();
+        Medico medico = medicoService.findByNome(atendimentoDTO.getMedico());
+        Paciente paciente = pacienteService.findByNome(atendimentoDTO.getPaciente());
 
         atendimento.setData_hora(LocalDateTime.now());
         atendimento.setAnamnese(atendimentoDTO.getAnamnese());
-        atendimento.setMedico(medicoService.findByNome(atendimentoDTO.getMedico()));
-        atendimento.setPaciente(pacienteService.findByNome(atendimentoDTO.getPaciente()));
+        atendimento.setMedico(medico);
+        atendimento.setPaciente(paciente);
 
         atendimentoService.save(atendimento);
 
