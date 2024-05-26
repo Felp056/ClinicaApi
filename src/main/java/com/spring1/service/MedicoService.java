@@ -14,8 +14,11 @@ public class MedicoService {
     }
 
     public List<Medico> findAll() { return medicoRepository.findAll(); }
+    public Medico findByNome(String nome) {
+        return medicoRepository.findMedicoByNome(nome);
+    }
     public Medico save(Medico Med) { return medicoRepository.save(Med); }
     public void delete(Medico Med) { this.medicoRepository.delete(Med); }
-    public Medico findById(Integer id){ return medicoRepository.findById(id).get(); }
+    public Medico findById(Integer id){ return medicoRepository.findMedicoById(id); }
     public Medico update(Medico Med) { return medicoRepository.save(Med); }
 }

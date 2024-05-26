@@ -17,6 +17,13 @@ public class PacienteService {
     public List<Paciente> findAll() {
         return pacienteRepository.findAll();
     }
+    public Paciente findById(Long id){
+        return pacienteRepository.findPacienteById(id);
+    }
+
+    public Paciente findByNome(String nome) {
+        return pacienteRepository.findPacienteByNome(nome);
+    }
 
     public Paciente save(Paciente paciente) {
         return pacienteRepository.save(paciente);
