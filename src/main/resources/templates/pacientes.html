@@ -2,7 +2,6 @@
 <html lang="pt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Gerenciamento de Pacientes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,8 +24,8 @@
             margin-bottom: 10px;
         }
         form input[type="text"],
-        form input[type="email"],
-        form input[type="number"] {
+        form input[type="date"],
+        form select {
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
@@ -65,11 +64,11 @@
 <form method="post" th:action="@{/pacientes/save}">
     <label>Nome: <input type="text" name="nome" required/></label>
     <br>
-    <label>Email: <input type="email" name="email" required/></label>
+    <label>Telefone: <input type="text" name="telefone" required/></label>
     <br>
-    <label>Idade: <input type="number" name="idade" required/></label>
+    <label>Data de Nascimento: <input type="text" name="data_nascimento" required/></label>
     <br>
-    <label>Endereço: <input type="text" name="endereco" required/></label>
+    <label>Plano: <input type="text" name="plano" required/></label>
     <br>
     <button type="submit">Salvar</button>
 </form>
@@ -79,18 +78,18 @@
     <tr>
         <th>Id</th>
         <th>Nome</th>
-        <th>Email</th>
-        <th>Idade</th>
-        <th>Endereço</th>
+        <th>Telefone</th>
+        <th>Data de Nascimento</th>
+        <th>Plano</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="paciente : ${pacientes}">
-        <td th:text="${paciente.id}"></td>
-        <td th:text="${paciente.nome}"></td>
-        <td th:text="${paciente.email}"></td>
-        <td th:text="${paciente.idade}"></td>
-        <td th:text="${paciente.endereco}"></td>
+        <td th:text="${paciente.getId()}"></td>
+        <td th:text="${paciente.getNome()}"></td>
+        <td th:text="${paciente.getTelefone()}"></td>
+        <td th:text="${paciente.getData_nascimento()}"></td>
+        <td th:text="${paciente.getPlano()}"></td>
     </tr>
     </tbody>
 </table>

@@ -28,13 +28,13 @@ public class PacienteController {
     }
 
     @PostMapping(path = "/pacientes/save")
-    public String savePaciente(@RequestBody Paciente paciente) {
+    public String savePaciente(Paciente paciente) {
         pacienteService.save(paciente);
         return "redirect:/pacientes";
     }
 
     @PostMapping(path = "/pacientes/delete")
-    public String deletePaciente(@RequestBody Paciente paciente) {
+    public String deletePaciente(Paciente paciente) {
         pacienteService.Delete(paciente);
     return "redirect:/pacientes";}
 
