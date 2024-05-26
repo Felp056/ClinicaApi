@@ -28,4 +28,6 @@ public class PacienteService {
     public Paciente save(Paciente paciente) {
         return pacienteRepository.save(paciente);
     }
+
+    public void Delete(Paciente paciente) { pacienteRepository.delete(paciente); }
 }
